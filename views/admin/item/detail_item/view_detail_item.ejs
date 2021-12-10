@@ -1,28 +1,55 @@
-<%- include("../../partials/header.ejs") %>
+<%- include("../../../partials/header.ejs") %>
 <!-- Page Wrapper -->
 <div id="wrapper">
-  <%- include("../../partials/Sidebar.ejs") %>
+  <%- include("../../../partials/Sidebar.ejs") %>
 
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">
-      <%- include("../../partials/navbar.ejs") %>
+      <%- include("../../../partials/navbar.ejs") %>
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
-        <%- include("../../partials/message.ejs") %>
+        <%- include("../../../partials/message.ejs") %>
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Bank</h1>
+        <h1 class="h3 mb-4 text-gray-800">Detail Item</h1>
         <!-- End Heading -->
-
-        <%- include('table_bank.ejs') %>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#show-feature"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+              >Show Feature</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#show-activity"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              >Show Activity</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <%- include("show_feature.ejs") %> <%- include("show_activity.ejs") %>
+        </div>
       </div>
       <!-- /.container-fluid -->
     </div>
     <!-- End of Main Content -->
 
-    <%- include("../../partials/footer.ejs") %>
+    <%- include("../../../partials/footer.ejs") %>
   </div>
   <!-- End of Content Wrapper -->
 </div>
@@ -68,22 +95,21 @@
   </div>
 </div>
 
-<%- include("add_modal.ejs") %>
-<!-- Import Edit Modal -->
-<%- include("edit_modal.ejs") %>
-<!-- Import JS -->
-<%- include("../../partials/js.ejs") %>
-
+<%- include("show_modal_feature.ejs") %> <%- include("../../../partials/js.ejs")
+%>
 <script>
+  $(document).ready(function () {
+    $('#dataTableActivity').Datatable();
+  });
+  CKEDITOR.replace('about');
+
   $('#dataTable').on('click', '.button-update', function () {
     let id = $(this).data('id');
     let name = $(this).data('name');
-    let nameBank = $(this).data('namebank');
-    let nomorRekening = $(this).data('nomorrekening');
+    let qty = $(this).data('qty');
     $('#edit-modal').modal('show');
     $('.id').val(id);
     $('.name').val(name);
-    $('.nameBank').val(nameBank);
-    $('.nomorRekening').val(nomorRekening);
+    $('.qty').val(qty);
   });
 </script>
