@@ -14,7 +14,8 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   phoneNumber: {
-    type: Boolean,
+    type: String,
+    required: true,
   },
 });
 
