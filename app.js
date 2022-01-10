@@ -27,6 +27,8 @@ const apiRouter = require('./routes/api');
 
 var app = express();
 
+// Cors
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -61,8 +63,6 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// Cors
-app.use(cors());
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
